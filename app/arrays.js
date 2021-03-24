@@ -4,7 +4,12 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    // let word = arr.splice(0, 1);
+    let word = arr.shift()
+    arr.push(word);
+    return arr;
 }
+
 
 
 // ------------------------------------------
@@ -16,6 +21,16 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
+    // return Math.max(...arr) 
+    let largest = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        let num = arr[i]
+        if (num > largest) {
+            largest = num
+        }
+    };
+    return largest;
+
 }
 
 
@@ -28,6 +43,14 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    // .map
+    let newArr = []
+    for (let i = 0; i <= arr.length; i++) {
+        const element = arr[i];
+        let newNums = element * arr.length;
+
+    }
+    console.log(newArr.map(newNums))
 }
 
 
@@ -62,9 +85,15 @@ let flights = [{
 
 
 function flightCost(destination, firstClass) {
-    //***hint: use the find method***
+    // find the flight with the given destination 
+    // if the request is for first class
+    // return the first class price
+    // otherwise return standard
+    // two returns 
 
 }
+
+
 
 
 // ------------------------------------------
@@ -76,7 +105,7 @@ function flightCost(destination, firstClass) {
 // output: {id: 17, name: 'St. MaryLou de la Playa Carmen'}
 //Example:
 // input: 1000
-// output: { error: "No user with that id." } 
+// output:  
 
 
 let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'Peter' },
@@ -84,9 +113,13 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
+    let found = staff.find(person => person.id === id);
+    if (found) {
 
+        return found
+    }
+    return { error: "No user with that id." }
 }
-
 
 // ------------------------------------------
 
@@ -111,4 +144,11 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let found = theBand.members.find(person => person.name === name);
+    let play = theBand.members.find(member => member.instrument === instrument);
+    if (found && play) {
+        return found + "is in the band and plays " + play;
+    }
+
+
 }
